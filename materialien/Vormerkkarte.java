@@ -40,8 +40,9 @@ public class Vormerkkarte {
     }
     
     /**
+     * Gibt die vormerkenden Kunden für das Medium aus.
      * 
-     * @return
+     * @return Die vormerkenden Kunden
      */
     public AbstractQueue<Kunde> getVormerker()
     {
