@@ -104,7 +104,7 @@ public class VormerkWerkzeug
     }
 
     /**
-     * Registriert die Aktionen, die bei benachrichtigungen der Services
+     * Registriert die Aktionen, die bei Benachrichtigungen der Services
      * ausgeführt werden.
      */
     private void registriereServiceBeobachter()
@@ -212,8 +212,10 @@ public class VormerkWerkzeug
         // TODO für Aufgabenblatt 6 (nicht löschen): Prüfung muss noch eingebaut
         // werden. Ist dies korrekt imlpementiert, wird der Vormerk-Button gemäß
         // der Anforderungen a), b), c) und e) aktiviert.
-        boolean vormerkenMoeglich = (kunde != null) && !medien.isEmpty();
-
+        
+        
+        //boolean vormerkenMoeglich = (kunde != null) && !medien.isEmpty();
+        boolean vormerkenMoeglich=_verleihService.istVormerkenMoeglich();
         return vormerkenMoeglich;
     }
 
@@ -229,6 +231,7 @@ public class VormerkWerkzeug
             .getSelectedMedien();
         Kunde selectedKunde = _kundenAuflisterWerkzeug.getSelectedKunde();
         // TODO für Aufgabenblatt 6 (nicht löschen): Vormerken einbauen
+        _verleihService.merkeVor(selectedMedien,selectedKunde);
 
     }
 
