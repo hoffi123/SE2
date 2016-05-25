@@ -30,9 +30,13 @@ public class Vormerkkarte {
      * @param medium Das Medium, das vorgemerkt werden soll.
      * 
      * TODO: Vor- und Nachbedingungen...
+     * @require kunde != null
+     * @require medium != null
      */
     public Vormerkkarte(Kunde kunde, Medium medium)
     {
+        assert kunde != null : "Vorbedingung verletzt: kunde != null";
+        assert medium != null : "Vorbedingung verletzt: medium != null";
         _vormerker = new ArrayBlockingQueue<Kunde>(3);
         _vormerker.add(kunde);
         
@@ -53,7 +57,7 @@ public class Vormerkkarte {
      * Prüft, ob die Vormerkliste voll ist. Falls ja, kann das 
      * Medium von keinem weiteren Kunden vorgemerkt werden.
      * 
-     * @return true, wenn die LIste voll besetzt ist, false sonst.
+     * @return true, wenn die Liste voll besetzt ist, false sonst.
      */
     public boolean istVormerklisteVoll()
     {
@@ -64,9 +68,14 @@ public class Vormerkkarte {
      * Fügt den übergebenen Kunden der Vormerkliste hinzu.
      * 
      * @param kunde Der hinzuzufügende Kunde
+     * 
+     * @require kunde != null
+     * 
+     * @ensure _vormerker.contains(kunde) == true
      */
     public void fügeVormerkerHinzu(Kunde kunde)
     {
+        assert kunde != null : "Vorbedingung verletzt: kunde != null";
         if (_vormerker.size() <= 2)
         {
             _vormerker.add(kunde);
@@ -78,9 +87,14 @@ public class Vormerkkarte {
      * Vormerker rücken automatisch auf.
      * 
      * @param kunde Der zu entfernende Kunde
+     * 
+     * @require kunde != null
+     * 
+     * @ensure _vormerker.contains(kunde) == false
      */
     public void entferneVormerker(Kunde kunde)
     {
+        assert kunde != null : "Vorbedingung verletzt: kunde != null";
         _vormerker.remove(kunde);
     }
     
